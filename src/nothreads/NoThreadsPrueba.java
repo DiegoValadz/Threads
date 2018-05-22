@@ -11,10 +11,10 @@ import javax.swing.SwingConstants;
 
 public class NoThreadsPrueba {
 
-    JButton btn, btn2;
     JProgressBar pgb[];
     JFrame frame;
     JPanel panel;
+    JButton btn;
     JTextField campo;
     NoThreadsListener listener;
     String msg;
@@ -23,11 +23,10 @@ public class NoThreadsPrueba {
     public NoThreadsPrueba() {
         frame = new JFrame("JProgressBar - With Threads");
         panel = new JPanel(new FlowLayout());
-        listener = new NoThreadsListener(this);
         pgb = new JProgressBar[2];
-        campo = new JTextField("Esto no es posible");
-        btn = new JButton("Start");
-        btn2 = new JButton("Imprimir Texto");
+        listener = new NoThreadsListener(this);
+        btn = new JButton("Imprimir");
+        campo = new JTextField("No corren simultaneamente");
         pgb[0] = new JProgressBar(SwingConstants.HORIZONTAL, 0, 20);
         pgb[1] = new JProgressBar(SwingConstants.HORIZONTAL, 0, 20);
     }
@@ -44,12 +43,10 @@ public class NoThreadsPrueba {
             pgb[i].setStringPainted(true);
         }
         btn.addActionListener(listener);
-        btn2.addActionListener(listener);
         panel.add(pgb[0]);
-        panel.add(btn);
         panel.add(pgb[1]);
         panel.add(campo);
-        panel.add(btn2);
+        panel.add(btn);
         frame.add(panel);
     }
 
@@ -80,6 +77,7 @@ public class NoThreadsPrueba {
         prueba.meta();
         prueba.addComponents();
         prueba.launchFrame();
+        prueba.ejecutarProgressBar(0);
         prueba.ejecutarProgressBar(1);
     }
 }

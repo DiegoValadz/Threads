@@ -10,7 +10,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class ThreadsPrueba {
-
     JButton btn, btn2;
     JProgressBar pgb[];
     JFrame frame;
@@ -62,15 +61,16 @@ public class ThreadsPrueba {
 
     public void ejecutarProgressBar() {
         MyThread threadP = new MyThread(pgb[1]);
+
         threadP.start();
     }
 
     public static void main(String[] args) {
         ThreadsPrueba prueba = new ThreadsPrueba();
+
         prueba.meta();
         prueba.ejecutarProgressBar();
         prueba.addComponents();
         prueba.launchFrame();
     }
-
 }
